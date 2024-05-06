@@ -25,9 +25,9 @@
   <ItemGroup>
     <ProjectReference Include="..\DataAccess.AllInOne\DataAccess.AllInOne.csproj" />
     <ProjectReference Include="..\DataAccess.Cqs\DataAccess.Cqs.csproj" />
-    <ProjectReference Include="..\DataAccess.DbClient\DataAccess.DbClient.csproj" />
     <ProjectReference Include="..\DataAccess.Decorated\DataAccess.Decorated.csproj" />
     <ProjectReference Include="..\DataAccess.SourceGenerators\DataAccess.SourceGenerators.csproj" />
+    <ProjectReference Include="..\DataAccess.Strategy\DataAccess.Strategy.csproj" />
   </ItemGroup>
 
   <ItemGroup>

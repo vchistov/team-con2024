@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 using Repono;
 
-using TeamCon2024.DataAccess.SourceGenerators;
+using TeamCon2024.DataAccess.Strategy;
 
 var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -13,10 +13,11 @@ var configuration = new ConfigurationBuilder()
 var serviceCollection = new ServiceCollection()
     .AddLogging()
     .AddSingleton<IConfiguration>(_ => configuration)
-    .AddSourceGeneratorsDatabase();
+    .AddStrategyDatabase();
 
 var serviceProvider = serviceCollection.BuildServiceProvider();
 
+/*
 var repository = serviceProvider.GetRequiredService<IRepository>();
 
 Console.WriteLine("=== Northern territories ===");
@@ -33,8 +34,8 @@ if (chicago != null)
 {
     Console.WriteLine("{0}\t{1}\t{2}", chicago.RegionID, chicago.TerritoryID, chicago.TerritoryDescription);
 }
+*/
 
-/*
 var repository = serviceProvider.GetRequiredService<ITerritoriesRepository>();
 
 Console.WriteLine("=== Northern territories ===");
@@ -50,4 +51,4 @@ var chicago = await repository.GetTerritoryByIdAsync("60601", default);
 if (chicago != null)
 {
     Console.WriteLine("{0}\t{1}\t{2}", chicago.RegionID, chicago.TerritoryID, chicago.TerritoryDescription);
-}*/
+}

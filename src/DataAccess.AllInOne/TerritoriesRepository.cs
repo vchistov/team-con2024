@@ -43,9 +43,9 @@ internal sealed class TerritoriesRepository : ITerritoriesRepository
         }, cancellationToken);
     }
 
-    public async Task<TerritoryRecord?> GetTerritoryByIdAsync(string territoryId, CancellationToken cancellationToken)
+    public Task<TerritoryRecord?> GetTerritoryByIdAsync(string territoryId, CancellationToken cancellationToken)
     {
-        return await ExecuteAsync(async ct =>
+        return ExecuteAsync(async ct =>
         {
             using var connection = _connectionFactory.CreateConnection(_connectionString);
             await connection.OpenAsync(ct);
