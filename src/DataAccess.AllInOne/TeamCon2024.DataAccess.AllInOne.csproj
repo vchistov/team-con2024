@@ -4,8 +4,6 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyName>TeamCon2024.DataAccess.Strategy</AssemblyName>
-    <RootNamespace>TeamCon2024.DataAccess.Strategy</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Core\TeamCon2024.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\database\northwind.db" Link="northwind.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess.AllInOne\TeamCon2024.DataAccess.AllInOne.csproj" />
+    <ProjectReference Include="..\DataAccess.Cqs\TeamCon2024.DataAccess.Cqs.csproj" />
+    <ProjectReference Include="..\DataAccess.Decorated\TeamCon2024.DataAccess.Decorated.csproj" />
+    <ProjectReference Include="..\DataAccess.SourceGenerators\TeamCon2024.DataAccess.SourceGenerators.csproj" />
+    <ProjectReference Include="..\DataAccess.Strategy\TeamCon2024.DataAccess.Strategy.csproj" />
+  </ItemGroup>
+
+</Project>
