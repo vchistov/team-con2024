@@ -11,6 +11,6 @@ public static class ServiceCollectionExtensions
         return services
             .AddDatabaseCore()
             .AddSingleton<IExecutionStrategy, TransientDbRetryExecutionStrategy>()
-            .AddSingleton<ITerritoriesRepository, TerritoriesRepository>();
+            .AddScoped<ITerritoriesRepository, TerritoriesRepository>();
     }
 }

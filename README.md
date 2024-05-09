@@ -42,8 +42,6 @@ Evolution of the previous approach. Implementation of the repository is generate
 
 ## Benchmarks
 
-### Getting List of Territories by Region Id
-
 ```text
 BenchmarkDotNet v0.13.12, Windows 10 (10.0.19045.4291/22H2/2022Update)
 Intel Core i7-7700T CPU 2.90GHz (Kaby Lake), 1 CPU, 8 logical and 4 physical cores
@@ -52,31 +50,25 @@ Intel Core i7-7700T CPU 2.90GHz (Kaby Lake), 1 CPU, 8 logical and 4 physical cor
   DefaultJob : .NET 8.0.1 (8.0.123.58001), X64 RyuJIT AVX2
 ```
 
-| Method                           | Mean     | Error    | StdDev   | Ratio | RatioSD | Gen0   | Allocated | Alloc Ratio |
-|--------------------------------- |---------:|---------:|---------:|------:|--------:|-------:|----------:|------------:|
-| GetTerritoriesByRegion_AllInOne  | 30.43 us | 0.511 us | 0.478 us |  1.00 |    0.00 | 1.0986 |   4.66 KB |        1.00 |
-| GetTerritoriesByRegion_Strategy  | 30.64 us | 0.369 us | 0.345 us |  1.01 |    0.02 | 1.0986 |   4.73 KB |        1.02 |
-| GetTerritoriesByRegion_Decorated | 29.84 us | 0.571 us | 0.446 us |  0.98 |    0.03 | 1.0986 |    4.5 KB |        0.97 |
-| GetTerritoriesByRegion_Cqs       | 31.57 us | 0.491 us | 0.459 us |  1.04 |    0.02 | 1.1597 |    4.8 KB |        1.03 |
-| GetTerritoriesByRegion_SourceGen | 30.84 us | 0.320 us | 0.300 us |  1.01 |    0.02 | 1.1597 |    4.8 KB |        1.03 |
+### Getting List of Territories by Region Id
+
+| Method                           | Mean     | Error    | StdDev   | Median   | Ratio | RatioSD | Gen0   | Allocated | Alloc Ratio |
+|--------------------------------- |---------:|---------:|---------:|---------:|------:|--------:|-------:|----------:|------------:|
+| GetTerritoriesByRegion_AllInOne  | 31.77 us | 0.326 us | 0.289 us | 31.63 us |  1.00 |    0.00 | 1.0986 |   4.66 KB |        1.00 |
+| GetTerritoriesByRegion_Strategy  | 31.83 us | 0.364 us | 0.304 us | 31.79 us |  1.00 |    0.02 | 1.0986 |   4.73 KB |        1.02 |
+| GetTerritoriesByRegion_Decorated | 31.59 us | 0.628 us | 0.880 us | 31.34 us |  1.00 |    0.03 | 1.0986 |    4.5 KB |        0.97 |
+| GetTerritoriesByRegion_Cqs       | 31.93 us | 0.249 us | 0.221 us | 31.82 us |  1.01 |    0.01 | 1.1597 |    4.8 KB |        1.03 |
+| GetTerritoriesByRegion_SourceGen | 31.81 us | 0.427 us | 0.379 us | 31.80 us |  1.00 |    0.01 | 1.1597 |    4.8 KB |        1.03 |
 
 ### Getting Single Territory by Id
 
-```text
-BenchmarkDotNet v0.13.12, Windows 10 (10.0.19045.4291/22H2/2022Update)
-Intel Core i7-7700T CPU 2.90GHz (Kaby Lake), 1 CPU, 8 logical and 4 physical cores
-.NET SDK 8.0.101
-  [Host]     : .NET 8.0.1 (8.0.123.58001), X64 RyuJIT AVX2
-  DefaultJob : .NET 8.0.1 (8.0.123.58001), X64 RyuJIT AVX2
-```
-
-| Method                          | Mean     | Error    | StdDev   | Ratio | RatioSD | Gen0   | Allocated | Alloc Ratio |
-|-------------------------------- |---------:|---------:|---------:|------:|--------:|-------:|----------:|------------:|
-| GetTerritoryByIdAsync_AllInOne  | 19.97 us | 0.396 us | 0.371 us |  1.00 |    0.00 | 0.7019 |   2.91 KB |        1.00 |
-| GetTerritoryByIdAsync_Strategy  | 20.30 us | 0.180 us | 0.168 us |  1.02 |    0.02 | 0.7019 |   2.98 KB |        1.02 |
-| GetTerritoryByIdAsync_Decorated | 19.14 us | 0.186 us | 0.174 us |  0.96 |    0.02 | 0.6714 |   2.82 KB |        0.97 |
-| GetTerritoryByIdAsync_Cqs       | 20.62 us | 0.407 us | 0.597 us |  1.05 |    0.04 | 0.7629 |   3.13 KB |        1.08 |
-| GetTerritoryByIdAsync_SourceGen | 20.40 us | 0.143 us | 0.134 us |  1.02 |    0.02 | 0.7629 |   3.13 KB |        1.08 |
+| Method                          | Mean     | Error    | StdDev   | Median   | Ratio | RatioSD | Gen0   | Allocated | Alloc Ratio |
+|-------------------------------- |---------:|---------:|---------:|---------:|------:|--------:|-------:|----------:|------------:|
+| GetTerritoryByIdAsync_AllInOne  | 20.56 us | 0.283 us | 0.265 us | 20.57 us |  1.00 |    0.00 | 0.7019 |   2.91 KB |        1.00 |
+| GetTerritoryByIdAsync_Strategy  | 20.28 us | 0.323 us | 0.286 us | 20.23 us |  0.99 |    0.02 | 0.7019 |   2.98 KB |        1.02 |
+| GetTerritoryByIdAsync_Decorated | 20.47 us | 0.260 us | 0.243 us | 20.40 us |  1.00 |    0.02 | 0.6714 |   2.82 KB |        0.97 |
+| GetTerritoryByIdAsync_Cqs       | 21.04 us | 0.294 us | 0.431 us | 20.88 us |  1.03 |    0.03 | 0.7629 |   3.13 KB |        1.08 |
+| GetTerritoryByIdAsync_SourceGen | 21.29 us | 0.343 us | 0.321 us | 21.20 us |  1.04 |    0.01 | 0.7629 |   3.13 KB |        1.08 |
 
 ## See Also
 

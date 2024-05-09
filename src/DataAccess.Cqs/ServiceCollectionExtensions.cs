@@ -15,7 +15,7 @@ public static class ServiceCollectionExtensions
 
         return services
             .AddDatabaseCore()
-            .AddSingleton<IRepository, Repository>()
+            .AddScoped<IRepository, Repository>()
             .AddScoped<IQueryHandler<GetTerritoriesByRegionQuery, IReadOnlyCollection<TerritoryRecord>>, GetTerritoriesByRegionQueryHandler>()
             .AddScoped<IQueryHandler<GetTerritoryByIdQuery, TerritoryRecord?>, GetTerritoryByIdQueryHandler>();
     }

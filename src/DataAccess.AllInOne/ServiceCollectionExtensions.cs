@@ -10,6 +10,6 @@ public static class ServiceCollectionExtensions
     {
         return services
             .AddDatabaseCore()
-            .AddSingleton<ITerritoriesRepository, TerritoriesRepository>();
+            .AddScoped<ITerritoriesRepository, TerritoriesRepository>();
     }
 }

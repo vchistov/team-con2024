@@ -2,7 +2,8 @@
 
 using TeamCon2024.Benchmarks;
 
-BenchmarkRunner.Run<Benchmarkie>();
+BenchmarkRunner.Run<TerritoriesByRegionIdBenchmarks>();
+BenchmarkRunner.Run<TerritoriesByIdBenchmarks>();
 
 /*
 var benchmarkie = new Benchmarkie();

@@ -10,7 +10,7 @@ public static class ServiceCollectionExtensions
     {
         return services
             .AddDatabaseCore()
-            .AddSingleton<TerritoriesRepository>()
-            .AddSingleton<ITerritoriesRepository>(sp => ActivatorUtilities.CreateInstance<TerritoriesRepositoryDecorator>(sp, sp.GetRequiredService<TerritoriesRepository>()));
+            .AddScoped<TerritoriesRepository>()
+            .AddScoped<ITerritoriesRepository>(sp => ActivatorUtilities.CreateInstance<TerritoriesRepositoryDecorator>(sp, sp.GetRequiredService<TerritoriesRepository>()));
     }
 }
